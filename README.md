@@ -19,8 +19,9 @@
    verdor/zhy-code/laravel-sql-trace/config/sql_trace.php
 ```
 
-#### 配合 LogViewer 的内容
-##### 正则表达式
+
+### 配合 LogViewer 的内容
+#### 正则表达式
 ```
     public static string $regex = '/^{"level":"(?<level>.*)","app_env":"(?<app_env>\S+)","app_name":"(?<app_name>\S+)","req_uri":"(?<req_uri>\S+)","req_method":"(?<req_method>\S+)","req_body":(?<req_body>.*),"db_conf":(?<db_conf>.*),"db_connection_name":"(?<db_connection_name>.*)","trace_id":"(?<trace_id>.*)","trace_datetime":"(?<trace_datetime>.*)","trace_sql_bindings":(?<trace_sql_bindings>.*),"execute_sql":"(?<execute_sql>.*)","execute_ms":(?<execute_ms>.*)}/';
 
