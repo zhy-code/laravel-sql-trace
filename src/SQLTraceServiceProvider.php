@@ -20,7 +20,7 @@ class SQLTraceServiceProvider extends ServiceProvider
         }
 
         $isOpenListen = config('sql_trace.open_listen_sql');
-        $sqlLogPath = config('sql_trace.sql_log_path', storage_path('/logs/'));
+        $sqlLogPath = config('sql_trace.sql_log_path') ?: storage_path('/logs/');
 
         if ($isOpenListen) {
             $traceId = $_REQUEST['trace_id'] ?? uniqid(bin2hex(random_bytes(10)),true);
@@ -51,7 +51,7 @@ class SQLTraceServiceProvider extends ServiceProvider
                     unset($dbConf['password']);
                 }
 
-                $logPath = $sqlLogPath . '.sql_trace.' . now()->toDateString() . '.log';
+                $logPath = $sqlLogPath . 'sql-trace-' . now()->toDateString() . '.log';
 
                 file_put_contents($logPath,json_encode([
                         'level' => $this->getSqlLevelByExecTime($sql->time),
@@ -79,7 +79,7 @@ class SQLTraceServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->mergeConfigFrom(__DIR__.'/../config/sql_trace.php', 'sqlTrace');
+        $this->mergeConfigFrom(__DIR__.'/../config/sql_trace.php', 'sql_trace');
     }
 
     /**
