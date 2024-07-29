@@ -1,0 +1,17 @@
+{
+    "name": "zhy/laravel-sql-trace",
+    "description": "SQL Trace For Laravel",
+    "type": "composer-plugin",
+    "license": "Apache-2.0 license",
+    "autoload": {
+        "psr-4": {
+            "Zhy\\LaravelSqlTrace\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "zhy"
+        }
+    ],
+    "require": {}
+}
